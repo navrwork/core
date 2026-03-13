@@ -12,6 +12,7 @@ public class StreamOfNumbers {
         findDuplicateNumbersInList();
         findFirstNumberInList();
         findNumberOfElementsInList();
+        findAllNumbersStartingWith();
     }
 
     // Find the largest number in a list
@@ -72,14 +73,15 @@ public class StreamOfNumbers {
      */
     private static void findAllNumbersStartingWith() {
         List<Integer> intList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 111);
+        int firstDigit = 1;
         List<Integer> numListStartingWith = intList.stream().filter(
                 n -> {
-                    int firstDigit = getFirstDigit(n);
-                    return firstDigit == 1;
+                    int fDigit = getFirstDigit(n);
+                    return fDigit == firstDigit;
                 }
         ).collect(Collectors.toList());
         System.out.printf("%n..... findAllNumbersStartingWith ..... %n");
-        System.out.printf("intList=%s%n", intList);
+        System.out.printf("firstDigit=%d, intList=%s%n", firstDigit, intList);
         System.out.printf("numListStartingWith=%s%n", numListStartingWith);
     }
 
@@ -108,7 +110,6 @@ public class StreamOfNumbers {
         System.out.printf("firstNum=%d%n", firstNum);
     }
 
-
     /**
      * Given a list of integers, find the total number of elements present in the list using Stream functions
      */
@@ -122,6 +123,5 @@ public class StreamOfNumbers {
         int numDigits = (int) Math.log10(num) + 1;
         return (int) (num / Math.pow(10, numDigits - 1));
     }
-
 
 }

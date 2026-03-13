@@ -8,12 +8,26 @@ Java 5 introduced several significant features, including generics, enhanced for
 Generics allow developers to define classes, interfaces, and methods with a placeholder for types, enabling compile-time type checking and eliminating the need for most type casts. This feature enhances type safety and code reusability by allowing collections to be defined with specific types. 
 
 ### WildCard
-| Wildcard Type | Adding Elements | Reading Elements | Use Case | 
-|-----:|---------------|-----|---------------|
-| List<?> | Not allowed (except null) | Read as Object | Read-only for unknown types |
-| List<? extends T> | Not allowed (except null) | Read as T | Read-only for subtypes of T |
-| List<? super T> | Can add T and subtypes | Read as Object | Write data of type T or its subtypes |
+| Wildcard Type | Adding Elements | Reading Elements | Use Case                                                                                             | 
+|-----:|---------------|-----|------------------------------------------------------------------------------------------------------|
+| List<?> | Not allowed (except null) | Read as Object | Read-only for unknown types                                                                          |
+| List<? extends T> | Not allowed (except null) | Read as T | List<? extends T> lets you read as T but no write allowed. Read-only for subtypes of T.              |
+| List<? super T> | Can add T and subtypes | Read as Object | List<? super T> lets you write T but reading gives you Object. Write data of type T or its subtypes. |
 
+### Generics Are Invariant
+ * Java generics are invariant by default, meaning a generic type like List&lt;String&gt; is not considered a subtype of List&lt;Object&gt;, even though String is a subtype of Object. 
+This strict behavior prevents type safety issues due to type erasure at runtime.
+ * Invariant: Exact type match only—no sub/supertype relation (List&lt;Integer&gt; unrelated to List&lt;Number&gt;).
+
+### Covariance vs. Contravariance 
+ * Invariant: Exact type match only—no sub/supertype relation (List&lt;Integer&gt; unrelated to List&lt;Number&gt;).
+ * Covariant (? extends T): Read-only, subtypes assignable (e.g., List&lt;? extends Number&gt; accepts List&lt;Integer&gt;).
+ * Contravariant (? super T): Write-only, supertypes assignable (e.g., List&lt;? super Integer&gt; accepts List&lt;Number&gt;).
+
+### PECS - "Producer Extends, Consumer Super"
+ * Use the PECS mnemonic: "Producer Extends, Consumer Super" to remember Java generics wildcards.
+ * Note: View producers/consumers from the collection's viewpoint, not yours. "Producer" means the collection produces (gives you) data via get(), so use ? extends. "Consumer" means the collection consumes (takes) your data via add(), so use ? super.
+ * Producer (read-only): Collection "produces" items for you → use ? extends T. Safe to read as T, can't add arbitrary items.
 
 ## Enhanced For-Loop
 Also known as the "for-each" loop, this feature simplifies the syntax for iterating over arrays and collections. It provides a cleaner and more readable way to traverse elements without the need for an explicit iterator. 
