@@ -8,11 +8,11 @@ Java 5 introduced several significant features, including generics, enhanced for
 Generics allow developers to define classes, interfaces, and methods with a placeholder for types, enabling compile-time type checking and eliminating the need for most type casts. This feature enhances type safety and code reusability by allowing collections to be defined with specific types. 
 
 ### WildCard
-| Wildcard Type | Adding Elements | Reading Elements | Use Case                                                                                             | 
-|-----:|---------------|-----|------------------------------------------------------------------------------------------------------|
-| List<?> | Not allowed (except null) | Read as Object | Read-only for unknown types                                                                          |
-| List<? extends T> | Not allowed (except null) | Read as T | List<? extends T> lets you read as T but no write allowed. Read-only for subtypes of T.              |
-| List<? super T> | Can add T and subtypes | Read as Object | List<? super T> lets you write T but reading gives you Object. Write data of type T or its subtypes. |
+|     Wildcard Type | Adding Elements           | Reading Elements | Use Case                                                                                             | 
+|------------------:|---------------------------|------------------|------------------------------------------------------------------------------------------------------|
+|           List<?> | Not allowed (except null) | Read as Object   | Read-only for unknown types                                                                          |
+| List<? extends T> | Not allowed (except null) | Read as T        | List<? extends T> lets you read as T but no write allowed. Read-only for subtypes of T.              |
+|   List<? super T> | Can add T and subtypes    | Read as Object   | List<? super T> lets you write T but reading gives you Object. Write data of type T or its subtypes. |
 
 ### Generics Are Invariant
  * Java generics are invariant by default, meaning a generic type like List&lt;String&gt; is not considered a subtype of List&lt;Object&gt;, even though String is a subtype of Object. 
