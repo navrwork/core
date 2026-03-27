@@ -43,16 +43,17 @@
 
 
 ## Gradle: Basic Build Commands
-|                   Command | Description                                              | 
-|--------------------------:|----------------------------------------------------------|
-|     ./gradlew clean build | Clean (removes prior outputs) first and then do a build. |
-|           ./gradlew build | Compiles code, runs tests, and packages the application. |
-|            ./gradlew test | Runs the test suite.                                     |
-|             ./gradlew run | Executes the main class of the application.              |
-|             ./gradlew jar | Creates a JAR file from the compiled code.               |
-|    ./gradlew dependencies | Displays the dependency tree for the project.            |
-|   ./gradlew build -x test | Builds the project but skips running tests.              |
-| ./gradlew build --dry-run | Simulates the build process without executing tasks.     |
+|                                                      Command | Description                                                                                                                                                                   | 
+|-------------------------------------------------------------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ./gradle wrapper<br/> ./gradle wrapper --gradle-version 8.10 | Run one of these commands in your project directory. <br/> Files generated: gradlew.bat, gradlew, gradle/wrapper/gradle-wrapper.jar, gradle/wrapper/gradle-wrapper.properties |
+|                                        ./gradlew clean build | Clean (removes prior outputs) first and then do a build.                                                                                                                      |
+|                                              ./gradlew build | Compiles code, runs tests, and packages the application.                                                                                                                      |
+|                                               ./gradlew test | Runs the test suite.                                                                                                                                                          |
+|                                                ./gradlew run | Executes the main class of the application.                                                                                                                                   |
+|                                                ./gradlew jar | Creates a JAR file from the compiled code.                                                                                                                                    |
+|                                       ./gradlew dependencies | Displays the dependency tree for the project.                                                                                                                                 |
+|                                      ./gradlew build -x test | Builds the project but skips running tests.                                                                                                                                   |
+|                                    ./gradlew build --dry-run | Simulates the build process without executing tasks.                                                                                                                          |
 
 ## Gradle vs Maven Comparison
 
