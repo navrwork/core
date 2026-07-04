@@ -6,8 +6,13 @@ plugins {
 group = 'com.navr.learn'
 version = '1.0-SNAPSHOT'
 
-sourceCompatibility = '21'
-targetCompatibility = '21'
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+    sourceCompatibility = '21'
+    targetCompatibility = '21'
+}
 
 repositories {
     mavenCentral()
@@ -16,8 +21,12 @@ repositories {
 dependencies {
     // Logging dependencies (example: log4j2)
     implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
-    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.25.4'
     implementation 'org.slf4j:slf4j-api:2.0.13'
+
+    // Lombok dependency
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     // Add other dependencies as needed
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
