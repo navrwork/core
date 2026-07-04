@@ -1,4 +1,4 @@
-package com.navr.learn;
+package com.navr.learn.play;
 
 public class StringDemo {
 
