@@ -1,4 +1,4 @@
-package com.navr.learn.logging;
+package com.navr.learn.basics.logging;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

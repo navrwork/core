@@ -1,4 +1,4 @@
-package com.navr.learn.time;
+package com.navr.learn.basics.time;
 
 import java.time.*;
 

@@ -1,4 +1,4 @@
-package com.navr.learn.regex;
+package com.navr.learn.basics.regex;
 
 
 /**

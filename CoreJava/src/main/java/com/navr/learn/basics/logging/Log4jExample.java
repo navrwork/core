@@ -1,4 +1,4 @@
-package com.navr.learn.logging;
+package com.navr.learn.basics.logging;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;

@@ -1,4 +1,4 @@
-package com.navr.learn.printf;
+package com.navr.learn.basics.printf;
 
 import java.util.Scanner;
 
