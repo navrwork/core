@@ -16,6 +16,7 @@ public class EnhancedSwitch {
      * @return
      */
     private static int daysInMonthV1(int month, int year) {
+        System.out.println("daysInMonthV1: Calculating days in month " + month + " for year: " + year);
         switch (month) {
             case 1:
                 return 31;
@@ -56,10 +57,16 @@ public class EnhancedSwitch {
      * @return
      */
     private static int daysInMonthV2(int month, int year) {
+        System.out.println("daysInMonthV2: Calculating days in month " + month + " for year: " + year);
         int daysInMonth = switch (month) {
             case 1, 3, 5, 7, 8, 10, 12 -> 31;
             case 4, 6, 9, 11 -> 30;
-            case 2 -> (year % 4 == 0) ? 29 : 28;
+            case 2 -> {
+                System.out.println("case 2: Calculating days in February for year: " + year);
+                yield (year % 4 == 0) ? 29 : 28;
+            }
+            // OR you can also use the one below
+            // case 2 -> (year % 4 == 0) ? 29 : 28;
             default -> throw new IllegalArgumentException("Invalid month");
         };
         System.out.printf("daysInMonthV2: month=%d, year=%d, daysInMonth=%d%n", month, year, daysInMonth);
