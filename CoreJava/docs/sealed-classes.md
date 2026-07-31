@@ -94,6 +94,25 @@ In this example, `Circle` and `Rectangle` are closed, while `Square` is open for
 
 A `non-sealed` class is effectively like a normal class for that branch of the hierarchy. It can be extended by other classes outside the original sealed set, so it removes the inheritance restriction for that specific class and its descendants.
 
+## Records and sealed interfaces
+
+If a record implements a sealed interface, the record becomes one of the allowed implementations of that interface. In that case, the record must be explicitly listed in the interface's `permits` clause.
+
+```java
+public sealed interface PaymentMethod permits CardPayment, CashPayment {
+}
+
+public record CardPayment(String cardNumber) implements PaymentMethod {
+}
+
+public record CashPayment(double amount) implements PaymentMethod {
+}
+```
+
+This works well when you want a closed set of immutable value types that all implement the same contract.
+
+A record does not need to declare `sealed`, `non-sealed`, or `final` in this situation. Records are implicitly `final`, so they naturally fit as permitted implementations of a sealed interface.
+
 ## Summary
 
 Sealed classes are a practical way to make inheritance more deliberate and safer. They are especially helpful when a hierarchy should be closed and when you want the compiler to help enforce that rule.
