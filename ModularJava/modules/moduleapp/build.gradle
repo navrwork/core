@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.moduleapp'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Module dependencies - moduleone and moduletwo
+    implementation project(':modules:moduleone')
+    implementation project(':modules:moduletwo')
+    
+    testImplementation platform('org.junit:junit-bom:5.9.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
