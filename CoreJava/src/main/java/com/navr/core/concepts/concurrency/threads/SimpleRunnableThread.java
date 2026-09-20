@@ -1,4 +1,4 @@
-package com.navr.core.concepts.threads;
+package com.navr.core.concepts.concurrency.threads;
 
 import java.util.concurrent.TimeUnit;
 

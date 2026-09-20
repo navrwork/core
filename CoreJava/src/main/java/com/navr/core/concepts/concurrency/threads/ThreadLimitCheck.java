@@ -1,4 +1,4 @@
-package com.navr.core.concepts.threads;
+package com.navr.core.concepts.concurrency.threads;
 
 /**
  * This class demonstrates the creation of a large number of threads to check the thread limit.
