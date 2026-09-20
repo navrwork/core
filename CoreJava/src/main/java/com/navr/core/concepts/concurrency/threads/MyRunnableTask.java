@@ -23,7 +23,8 @@ public class MyRunnableTask implements Runnable {
             TimeUnit.SECONDS.sleep(10); // Sleep for 10 seconds to simulate work
         } catch (InterruptedException e) {
             System.out.printf("MyRunnableTask: Thread interrupted. threadName=%s%n", Thread.currentThread().getName());
-            throw new RuntimeException(e);
+            Thread.currentThread().interrupt(); // Restore the interrupted status to allow higher-level interrupt handling
+            return;
         }
     }
 }

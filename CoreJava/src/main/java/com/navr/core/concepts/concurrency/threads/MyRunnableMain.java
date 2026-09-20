@@ -11,8 +11,18 @@ import java.util.concurrent.TimeoutException;
  */
 public class MyRunnableMain {
     public static void main(String[] args) {
-        runnableWithJoin();
-        runnableWithExecutorService();
+        try {
+            runnableWithJoin();
+        } catch (RuntimeException e) {
+            System.out.printf("MyRunnableMain: Caught RuntimeException during runnableWithJoin(): %s%n", e.getMessage());
+        }
+
+        try {
+            runnableWithExecutorService();
+        } catch (RuntimeException e) {
+            System.out.printf("MyRunnableMain: Caught RuntimeException during runnableWithExecutorService(): %s%n", e.getMessage());
+        }
+        System.out.printf("MyRunnableMain: Main thread ENDED. tName: %s%n", Thread.currentThread().getName());
     }
 
     /**
