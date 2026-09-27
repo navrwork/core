@@ -8,6 +8,9 @@ package com.navr.core.java11;
  * <i>$ java HelloWorld.java</i>
  * <i>$ java Addition.java 1 2 3</i>
  *
+ * This is how you execute this program:
+ * <i>$ java com/navr/core/java11/SingleFileProgram.java</i>
+ *
  * </pre>
  */
 public class SingleFileProgram {
