@@ -42,7 +42,7 @@ This makes the input deterministic and unique for most URLs.
 ### 2) Convert BigInteger to Base62
 
 ```java
-public static String toBase62(BigInteger number) {
+public static String encodeBase62(BigInteger number) {
     BigInteger base = BigInteger.valueOf(BASE62_CHARS.length());
     StringBuilder sb = new StringBuilder();
 
@@ -74,9 +74,10 @@ This creates a compact, URL-safe representation of the hash.
 ### 3) Shorten to a fixed length
 
 ```java
-private static String shortenUrl(String longUrl, int shortUrlLength) {
-    String shortCode = longUrl.length() > shortUrlLength ? longUrl.substring(0, shortUrlLength) : longUrl;
-    return shortCode;
+private static String createShortCode(String base62Hash, int shortCodeLength) {
+    return base62Hash.length() > shortCodeLength
+            ? base62Hash.substring(0, shortCodeLength)
+            : base62Hash;
 }
 ```
 
@@ -85,8 +86,8 @@ The final generator method is:
 ```java
 public static String generateShortUrl(String url) {
     BigInteger hash = generateHash(url);
-    String base62 = toBase62(hash);
-    return shortenUrl(base62, 8);
+    String base62 = encodeBase62(hash);
+    return createShortCode(base62, 8);
 }
 ```
 

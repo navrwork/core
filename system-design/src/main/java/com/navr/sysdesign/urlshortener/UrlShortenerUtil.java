@@ -48,7 +48,7 @@ public class UrlShortenerUtil {
      * @param number The BigInteger to be converted.
      * @return A base62 string representation of the number.
      */
-    public static String toBase62(BigInteger number) {
+    public static String encodeBase62(BigInteger number) {
         BigInteger base = BigInteger.valueOf(BASE62_CHARS.length());
         StringBuilder sb = new StringBuilder();
 
@@ -65,15 +65,16 @@ public class UrlShortenerUtil {
     }
 
     /**
-     * Shortens the given long URL to a specified length.
+     * Creates a short code from the Base62-encoded hash.
      *
-     * @param longUrl        The original long URL to be shortened.
-     * @param shortUrlLength The desired length of the shortened URL.
-     * @return A shortened version of the original URL.
+     * @param base62Hash      The Base62-encoded URL hash.
+     * @param shortCodeLength The desired maximum length of the short code.
+     * @return The leading characters of the encoded hash, up to the requested length.
      */
-    private static String shortenUrl(String longUrl, int shortUrlLength) {
-        String shortCode = longUrl.length() > shortUrlLength ? longUrl.substring(0, shortUrlLength) : longUrl;
-        return shortCode;
+    private static String createShortCode(String base62Hash, int shortCodeLength) {
+        return base62Hash.length() > shortCodeLength
+                ? base62Hash.substring(0, shortCodeLength)
+                : base62Hash;
     }
 
     /**
@@ -84,8 +85,8 @@ public class UrlShortenerUtil {
      */
     public static String generateShortUrl(String url) {
         BigInteger hash = generateHash(url);
-        String base62 = toBase62(hash);
-        return shortenUrl(base62, 8); // Shorten to 8 characters
+        String base62 = encodeBase62(hash);
+        return createShortCode(base62, 8);
     }
 
     public static void main(String[] args) {
@@ -94,17 +95,22 @@ public class UrlShortenerUtil {
         System.out.printf("Short URL Utility Test%n");
         System.out.printf("###############################################%n");
 
-        // URLs with same characters but different order should generate different short URLs
+        //
+        // Note: URLs with same characters but different order should generate different short URLs
+        //
+
+        // url1
         String url1 = "https://www.abc.com";
         BigInteger hash1 = generateHash(url1);
-        System.out.printf("Hash for %s: %s%n", url1, hash1.toString(16)); // Print hash in hexadecimal
         String shortUrl1 = generateShortUrl(url1);
+        System.out.printf("Hash for %s: %s%n", url1, hash1.toString(16)); // Print hash in hexadecimal
+        System.out.printf("Short URL for %s: %s%n", url1, shortUrl1);
+
+        // url2
         String url2 = "https://www.cab.com"; // Same characters as url1 but different order
         BigInteger hash2 = generateHash(url2);
-        System.out.printf("Hash for %s: %s%n", url2, hash2.toString(16)); // Print hash in hexadecimal
         String shortUrl2 = generateShortUrl(url2);
-
-        System.out.printf("Short URL for %s: %s%n", url1, shortUrl1);
+        System.out.printf("Hash for %s: %s%n", url2, hash2.toString(16)); // Print hash in hexadecimal
         System.out.printf("Short URL for %s: %s%n", url2, shortUrl2);
     }
 }
