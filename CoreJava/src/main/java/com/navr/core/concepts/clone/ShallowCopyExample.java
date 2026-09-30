@@ -1,4 +1,4 @@
-package com.navr.core.concepts.objcopy;
+package com.navr.core.concepts.clone;
 
 import java.util.ArrayList;
 import java.util.List;
