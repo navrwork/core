@@ -1,4 +1,4 @@
-package com.navr.core.concepts.fi;
+package com.navr.core.concepts.functional;
 
 /**
  * Demonstrates {@link Runnable} as a functional-interface method argument.

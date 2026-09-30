@@ -1,4 +1,4 @@
-package com.navr.core.concepts.fi;
+package com.navr.core.concepts.functional;
 
 /**
  * Demonstrates the difference between passing a normal object and passing a
