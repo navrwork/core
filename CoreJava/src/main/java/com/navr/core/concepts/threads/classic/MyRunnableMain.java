@@ -1,4 +1,4 @@
-package com.navr.core.concepts.concurrency.threads;
+package com.navr.core.concepts.threads.classic;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;

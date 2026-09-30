@@ -1,4 +1,4 @@
-package com.navr.core.concepts.concurrency.threads;
+package com.navr.core.concepts.threads.modern;
 
 /**
  * Demonstrates passing lambda expressions as implementations of a functional
@@ -81,7 +81,7 @@ public class FuncInterfaceMain {
     }
 
     /**
-     * Executes the {@link Runnable#run()} implementation supplied through a
+     * Executes the {@link Runnable#run()} implementation / behavior supplied through a
      * functional interface argument.
      * <p>
      * Passing the implementation as an argument allows callers to provide

@@ -1,6 +1,5 @@
-package com.navr.core.concepts.concurrency.threads;
+package com.navr.core.concepts.threads.classic;
 
-import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

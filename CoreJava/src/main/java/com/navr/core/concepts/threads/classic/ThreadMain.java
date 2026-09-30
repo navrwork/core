@@ -1,4 +1,4 @@
-package com.navr.core.concepts.concurrency.threads;
+package com.navr.core.concepts.threads.classic;
 
 /**
  * This class demonstrates various ways to create and manage threads in Java.
