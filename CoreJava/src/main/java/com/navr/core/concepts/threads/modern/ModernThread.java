@@ -5,6 +5,8 @@ public class ModernThread {
     public static void main(String[] args) {
         demoThreadOfPlatform();
         demoLambdaThread();
+        demoThreadOfPlatformAndLambda();
+        demoThreadMethodReferenceThread();
     }
 
     /**
@@ -46,5 +48,45 @@ public class ModernThread {
         thread.setDaemon(false);
         thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
+    }
+
+    private static void demoThreadOfPlatformAndLambda() {
+        Thread.ofPlatform()
+                .name("ModernLambdaThread-", 1)
+                .daemon(false)
+                .priority(Thread.NORM_PRIORITY)
+                .start(() -> {
+                    System.out.println("Modern Lambda thread started: " + Thread.currentThread().getName());
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        System.out.println("Modern Lambda thread interrupted: " + Thread.currentThread().getName());
+                    }
+                    System.out.println("Modern Lambda thread ended: " + Thread.currentThread().getName());
+                });
+    }
+
+    /**
+     * Demonstrates creating a thread using a method reference.
+     * <p>
+     * Note:
+     * <li>Thread.Builder.start(...) accepts a Runnable, and a method reference whose target method
+     * takes no arguments and returns void can serve as that Runnable.</li>
+     * <li>when the method reference is used where Java expects a functional interface, Java checks
+     * whether the referenced method is compatible with that interface’s single abstract method.
+     * You don’t have to declare that the method implements the interface.</li>
+     */
+    private static void demoThreadMethodReferenceThread() {
+        Thread.ofPlatform()
+                .name("ModernMethodReferenceThread-", 1)
+                .start(ModernThread::doWork);
+    }
+
+    /**
+     * This method is referenced in the demoThreadMethodReferenceThread() method.
+     * It demonstrates the use of method references in Java, which provide a more concise way to refer to methods without executing them.
+     */
+    private static void doWork() {
+        System.out.println("Method reference thread started: " + Thread.currentThread().getName());
     }
 }
