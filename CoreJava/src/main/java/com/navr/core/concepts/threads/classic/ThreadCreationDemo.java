@@ -5,15 +5,15 @@ package com.navr.core.concepts.threads.classic;
  * It includes examples of creating threads by extending the Thread class,
  * implementing the Runnable interface, using anonymous classes, and using lambda expressions.
  */
-public class ThreadMain {
+public class ThreadCreationDemo {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Main thread started. tName: " + Thread.currentThread().getName());
 
-        ThreadMain main = new ThreadMain();
-        main.simpleThread(); // legacy
-        main.runnableThread(); // legacy
-        main.runnableAnanymous(); // legacy
-        main.runnableLambda();
+        ThreadCreationDemo demo = new ThreadCreationDemo();
+        demo.simpleThread(); // legacy
+        demo.runnableThread(); // legacy
+        demo.runnableAnonymous(); // legacy
+        demo.runnableLambda();
 
         System.out.println("Main thread ENDED. tName: " + Thread.currentThread().getName());
     }
@@ -53,7 +53,7 @@ public class ThreadMain {
     /**
      * Demonstrates creating a thread using an anonymous Runnable implementation.
      */
-    private void runnableAnanymous() throws InterruptedException {
+    private void runnableAnonymous() throws InterruptedException {
         System.out.println("runnableAnonymous method started by " + Thread.currentThread().getName());
         Runnable runnable = new Runnable() {
             @Override
@@ -86,5 +86,4 @@ public class ThreadMain {
         t2.join();
         System.out.println("simpleThread method ENDED. tName: " + Thread.currentThread().getName());
     }
-
 }

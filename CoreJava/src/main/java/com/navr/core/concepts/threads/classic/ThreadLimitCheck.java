@@ -11,9 +11,7 @@ public class ThreadLimitCheck {
         ThreadLimitCheck check = new ThreadLimitCheck();
 
         for (int i = 0; i < 50000; i++) {
-            Thread t = new Thread(() -> {
-                check.doSomething();
-            });
+            Thread t = new Thread(check::doSomething, "Thread-" + i); // Spawn a new thread for each iteration, executing the doSomething method
             t.start();
         }
 
