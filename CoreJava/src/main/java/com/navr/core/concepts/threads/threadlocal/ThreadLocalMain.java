@@ -1,4 +1,4 @@
-package com.navr.core.concepts.threads.classic;
+package com.navr.core.concepts.threads.threadlocal;
 
 public class ThreadLocalMain {
     private static final ThreadLocal<RequestContext> CURRENT_CONTEXT = new ThreadLocal<>();
