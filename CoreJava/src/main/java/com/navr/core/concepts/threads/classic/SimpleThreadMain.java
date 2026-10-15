@@ -70,7 +70,6 @@ public class SimpleThreadMain {
         return t;
     }
 
-
     /**
      * Start a thread by creating an instance of the Thread class and passing a method reference that implements the run() method of the Runnable interface. <br/>
      */
@@ -80,6 +79,11 @@ public class SimpleThreadMain {
         return t;
     }
 
+    /**
+     * This method is used as a method reference for the Runnable interface's run() method. <br/>
+     * Note that the method signature of this method is the same as that of the run() method of the Runnable interface,
+     * which takes no arguments and returns void.
+     */
     private void runnableMethod() {
         System.out.println("runnableMethod started: " + Thread.currentThread().getName());
         try {
