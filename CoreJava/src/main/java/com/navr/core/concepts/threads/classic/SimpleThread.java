@@ -17,12 +17,12 @@ public class SimpleThread extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Thread started: " + getName());
+        System.out.println("SimpleThread started: " + getName());
         try {
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {
-            System.out.println("Thread interrupted: " + getName());
+            System.out.println("SimpleThread interrupted: " + getName());
         }
-        System.out.println("Thread ended: " + getName());
+        System.out.println("SimpleThread ended: " + getName());
     }
 }

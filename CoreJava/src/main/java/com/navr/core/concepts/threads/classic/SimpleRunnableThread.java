@@ -15,12 +15,12 @@ public class SimpleRunnableThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Runnable Thread started: " + Thread.currentThread().getName());
+        System.out.println("SimpleRunnableThread started: " + Thread.currentThread().getName());
         try {
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {
-            System.out.println("Runnable Thread interrupted: " + Thread.currentThread().getName());
+            System.out.println("SimpleRunnableThread interrupted: " + Thread.currentThread().getName());
         }
-        System.out.println("Runnable Thread ended: " + Thread.currentThread().getName());
+        System.out.println("SimpleRunnableThread ended: " + Thread.currentThread().getName());
     }
 }
